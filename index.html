@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>Stundenplan</title>
+    <meta charset='utf-8' />
+    <script scr="js/script.js"></script>
+    <script src="js/fullcalendar-6.1.15/dist/index.global.min.js"></script>
+
+    <script scr="js/icalendar-6.1.15/package/index.global.min.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                initialView: 'timeGridWeek',
+                slotMinTime: "08:00:00",
+                slotMaxTime: "20:30:00",
+                firstDay: 1,
+                locale: "de",
+                eventSources: [
+
+                    // your event source
+                    {
+                        url: '/timetables.json', // use the `url` property
+                        color: 'yellow',    // an option!
+                        textColor: 'black'  // an option!
+                    }
+
+                    // any other sources...
+
+                ]
+            });
+            calendar.render();
+        });
+
+    </script>
+</head>
+
+<body>
+    <container>
+        <menu>
+            <ul>
+                <li>
+                    <button id="buttonPlanErstellen" class="menuButton">Plan erstellen</button>
+                </li>
+                <li>
+                    <button id="buttonEMI" class="menuButton">Fakultät EMI</button>
+                    <ul>
+                        <li>
+                            <button id="buttonBachelor" class="menuButton">Bachelor</button>
+                            <ul>
+                                <li><button id="buttonEI" class="menuButton">Elektro- und Informationstechnik
+                                        (EI)</button></li>
+                                <li><button id="buttonGI" class="menuButton">Geoinformatik und Landmanagement
+                                        (GI)</button></li>
+                                <li><button id="buttonII" class="menuButton">Industrie-4.0.-Informatik (II)</button>
+                                </li>
+                                <li><button id="buttonIPE" class="menuButton">Ingenieurpädagogik Fachrichtung Elektro-
+                                        und Informationstechnik (IPE)</button></li>
+                                <li><button id="buttonKI" class="menuButton">Künstliche Intelligenz (KI)</button></li>
+                                <li><button id="buttonIK" class="menuButton">Künstliche Intelligenz – International
+                                        (IK)</button></li>
+                                <li><button id="buttonMI" class="menuButton">Medieninformatik (MI)</button></li>
+                                <li><button id="buttonMT" class="menuButton">Medienproduktion und Medientechnik
+                                        (MT)</button></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button id="buttonMaster" class="menuButton">Master</button>
+                            <ul>
+                                <li><button id="buttonMAI" class="menuButton">Artificial Intelligence for Industrial
+                                        Applications (MAI) </button></li>
+                                <li><button id="buttonEDU" class="menuButton">Educational Technology (EDU)</button></li>
+                                <li><button id="buttonIA" class="menuButton">IT und Automation (IA)</button></li>
+                                <li><button id="buttonMKI" class="menuButton">Künstliche Intelligenz (MKI)</button></li>
+                                <li><button id="buttonMP" class="menuButton">Medientechnik und Medienproduktion
+                                        (MP)</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </menu>
+        <div id='calendar'></div>
+        <footer>Alle Angaben ohne Gewähr!</footer>
+    </container>
+</body>
+
+</html>
